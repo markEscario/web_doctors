@@ -8,7 +8,6 @@
           <q-icon name="search" />
         </template>
       </q-input>
-      {{ pageError }}
       <AddNewDoctorsModal :fModal="medium" :vData="webDoctors" :title="formTitle" @close="closeDialog"
         @hide="closeDialog" />
       <q-table title="DOCTORS" :rows="doctors" :columns="columns" :filter="filter" :loading="loading" row-key="title">

@@ -91,7 +91,6 @@ export default defineComponent({
     },
     checkIsLogged() {
       this.loggedUsers.accessToken ? this.$router.push('/dashboard') : this.$router.push('/')
-      console.log('token: ', this.loggedUsers.accessToken)
     }
   },
 

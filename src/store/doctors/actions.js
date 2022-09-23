@@ -28,9 +28,7 @@ export async function getDoctors(context) {
 }
 export async function createDoctors(context, payload) {
   try {
-    console.log('payload: ', payload)
     const response = await axios.post(`${this.state.doctors.apiUrl}/create_doctors`, payload)
-    console.log('reg result: ', response.data)
     context.commit('setSubmitStatus', response.status)
     return response
   } catch (err) {
@@ -60,9 +58,7 @@ export async function searchSystemUsers(context, payload) {
 }
 export async function register(context, payload) {
   try {
-    console.log('payload: ', payload)
     const response = await axios.post(`${this.state.doctors.apiUrl}/register`, payload)
-    console.log('reg result: ', response.data)
     context.commit('setRegisterResponse', response.data)
     return response
   } catch (err) {
@@ -72,9 +68,7 @@ export async function register(context, payload) {
 }
 export async function handleLogin(context, payload) {
   try {
-    console.log('login payload: ', payload)
     const response = await axios.post(`${this.state.doctors.apiUrl}/sign_in`, payload)
-
     if (response.data.accessToken) {
       SessionStorage.set('userData', response.data)
       context.commit('setProfileData', response.data)
@@ -105,7 +99,6 @@ export async function getProfile(context, payload) {
 export async function editProfile(context, payload) {
   try {
     const response = await axios.post(`${this.state.doctors.apiUrl}/update_profile`, payload)
-    console.log('edit: ', response.data)
     context.commit('setRegisterResponse', response.data)
     return response
   } catch (err) {
@@ -120,7 +113,6 @@ export async function logOut(context) {
 export async function updateDoctors(context, payload) {
   try {
     const response = await axios.put(`${this.state.doctors.apiUrl}/doctors/${payload.code}`, payload)
-    console.log('reg result: ', response.data)
     context.commit('setSubmitStatus', response.status)
     return response
   } catch (err) {
@@ -130,7 +122,6 @@ export async function updateDoctors(context, payload) {
 }
 export async function deleteDoctor(context, payload) {
   try {
-    console.log('d payload id: ', payload.code)
     const response = await axios.delete(`${this.state.doctors.apiUrl}/doctors/${payload.code}`)
     context.commit('setSubmitStatus', response.status)
     return response

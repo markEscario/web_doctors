@@ -3,9 +3,6 @@
     <q-header bordered class="bg-primary text-white">
       <q-toolbar>
         <q-toolbar-title class="text-uppercase">
-          <!-- <q-avatar>
-              <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
-            </q-avatar> -->
           Web Doctors
         </q-toolbar-title>
       </q-toolbar>
@@ -94,7 +91,6 @@ export default defineComponent({
         password: this.loginInput.password
       }
       const res = await this.$store.dispatch('doctors/handleLogin', data)
-
       this.loggedUsers.accessToken ? this.$router.push('/doctors') : this.$router.push('/')
     },
     checkIsLogged() {

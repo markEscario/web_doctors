@@ -174,7 +174,6 @@ export default defineComponent({
     vData: {
       handler(val) {
         if (val) {
-          console.log('val: ', val)
           this.webDoctors.id = val.id
           this.webDoctors.code = val.code
           this.webDoctors.last_name = val.last_name
@@ -239,7 +238,6 @@ export default defineComponent({
         status: this.webDoctors.status,
       }
       const result = await this.$store.dispatch('doctors/createDoctors', data)
-      console.log('result :', result.status)
       this.submitStatus === 200 ? (() => { this.close(); this.triggerPositive(); this.getDoctors(); })() : null
     },
     async saveUpdatedDoctor() {
@@ -261,7 +259,6 @@ export default defineComponent({
         status: this.webDoctors.status,
       }
       const result = await this.$store.dispatch('doctors/updateDoctors', data)
-      console.log('result :', result.status)
       this.submitStatus === 200 ? (() => { this.close(); this.triggerInfo(); this.getDoctors(); })() : null
     },
     async deleteDoctor() {
@@ -272,7 +269,6 @@ export default defineComponent({
       this.submitStatus === 200 ? (() => { this.close(); this.triggerNegative(); this.getDoctors(); })() : null
     },
     submitForm() {
-      console.log('action: ', this.title)
       this.title === 'Add New Doctor' ? this.saveDoctor() : this.title === 'Edit Doctor' ? this.saveUpdatedDoctor() : this.deleteDoctor()
     },
     close() {
