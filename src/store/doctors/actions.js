@@ -12,6 +12,7 @@ export async function getSystemUsers(context) {
   }
 }
 export async function getDoctors(context) {
+  await new Promise((res) => setTimeout(() => res(), 3000));
   try {
     const response = await axios.get(`${this.state.doctors.apiUrl}/doctors`)
     for (const doctor of response.data) {
@@ -19,7 +20,7 @@ export async function getDoctors(context) {
       doctor.schedule = doctor.schedule ? 'By Appointment' : doctor.schedule
     }
     context.commit('setDoctors', response.data)
-    return response.data
+    return response
   } catch (err) {
     console.log(err);
     return err

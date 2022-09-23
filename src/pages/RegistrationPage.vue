@@ -3,7 +3,7 @@
     <q-header bordered class="bg-primary text-white">
       <q-toolbar>
         <q-toolbar-title class="text-uppercase">
-          Web Dotors
+          Web Doctors
         </q-toolbar-title>
       </q-toolbar>
     </q-header>

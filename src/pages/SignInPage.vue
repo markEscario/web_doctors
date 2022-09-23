@@ -12,8 +12,13 @@
     </q-header>
 
     <q-page-container>
+      <div class="q-pa-md q-gutter-sm">
+        <q-banner inline-actions rounded v-if="loginResponse" class="bg-red text-white">
+          {{ loginResponse.message }}
+        </q-banner>
+      </div>
       <div class="q-pa-md container-pos" style="max-width: 400px">
-        <h6 class="text-subtitle2 text-red" v-if="loginResponse">{{ loginResponse.message }}</h6>
+
         <q-form @submit="handleLogin" class="q-gutter-md">
           <q-input outlined v-model="loginInput.username" hint="Username" lazy-rules
             :rules="[val => val && val.length > 0 || 'This is required']" />
@@ -65,7 +70,8 @@ export default defineComponent({
         username: '',
         password: ''
       },
-      formMessage: ''
+      formMessage: '',
+      bannerBg: 'red'
     }
   },
 
@@ -88,11 +94,11 @@ export default defineComponent({
         password: this.loginInput.password
       }
       const res = await this.$store.dispatch('doctors/handleLogin', data)
-      console.log('res: ', res.data)
+
       this.loggedUsers.accessToken ? this.$router.push('/doctors') : this.$router.push('/')
     },
     checkIsLogged() {
-      this.loggedUsers.accessToken ? this.$router.push('/dashboard') : this.$router.push('/')
+      this.loggedUsers.accessToken ? this.$router.push('/doctors') : this.$router.push('/')
     },
   }
 })

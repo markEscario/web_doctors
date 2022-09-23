@@ -19,9 +19,10 @@
           </q-td>
         </template>
         <template #loading>
-          <q-inner-loading showing color="primary" />
+          <q-inner-loading showing color="primary" size="90px" />
         </template>
       </q-table>
+
     </div>
   </q-page>
 </template>
@@ -39,7 +40,7 @@ export default defineComponent({
     return {
       columns,
       loading,
-      filter
+      filter,
     }
   },
   data() {
@@ -82,9 +83,9 @@ export default defineComponent({
   methods: {
     async getDoctors() {
       const doctorsList = await this.$store.dispatch('doctors/getDoctors')
-      console.log('doctors: ', doctorsList)
       this.loading = false
     },
+
     openAdd() {
       this.medium = true
       this.formTitle = "Add New Doctor"
